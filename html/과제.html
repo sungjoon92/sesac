@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>과제</h1>
+    <!-- section1 start -->
+    <section>
+      <h2>1. 나의 최애 음식</h2>
+      <img
+        src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAzMThfMjcx%2FMDAxNzEwNzY5NTA4NDgz.K_0czEAT6p3cmwDrPfzX3fbKvZEis5PRlkRGClCNbaYg.EKc32cptEiTtPiKzLHwUeYhk4aP81yQq5sxK1ENzkWsg.JPEG%2F20240315_191846.jpg&type=a340"
+        alt="파스타"
+      />
+      <div>
+        사진
+        <a
+          href="https://search.naver.com/search.naver?ssc=tab.image.all&where=image&sm=tab_jum&query=%ED%8C%8C%EC%8A%A4%ED%83%80"
+          target="_blank"
+          >더보기</a
+        >
+      </div>
+    </section>
+    <!-- section1 end -->
+
+    <hr />
+    <!-- section2 start -->
+    <section>
+      <h2>2. 내가 좋아하는 영화 장르와 도서 장르</h2>
+      <div class="like_list">
+        <!-- 종목 -->
+        <ul>
+          <li>
+            영화
+            <!-- 장르 -->
+            <ul>
+              <li>
+                액션
+                <ul>
+                  <li>아이언맨</li>
+                </ul>
+              </li>
+              <li>
+                코미디
+                <ul>
+                  <li>나 홀로 집에</li>
+                </ul>
+              </li>
+              <li>
+                드라마
+                <ul>
+                  <li>어바웃 타임</li>
+                </ul>
+              </li>
+            </ul>
+            <!-- 장르 end -->
+          </li>
+
+          <li>
+            도서
+            <ul>
+              <li>소설</li>
+              <li>역사</li>
+              <li>과학</li>
+            </ul>
+          </li>
+        </ul>
+        <!-- 종목 end -->
+      </div>
+    </section>
+    <!-- section2 end -->
+
+    <hr />
+    <!-- section3 start -->
+    <section>
+      <h2>3. 팀 버너스리</h2>
+      <h3>소개</h3>
+      <img src="assets/Tim_Berners_Lee.jpg" alt="팀 버너스리" />
+      <p>
+        영국의 컴퓨터과학자이며 월드 와이드 웹의 하이퍼텍스트 시스템을 개발했다
+      </p>
+      <p>
+        인터넷의 기반을 닦은 여러 공로로 웹의 아버리자고 불리는 인물 중 하나.
+      </p>
+      <h3>생애</h3>
+      <span>잉글랜드 런던에서 태어났다.</span>
+      <h3>악력</h3>
+      <ul>
+        <li>1990년 최초로 하이퍼텍스트 브라우저의 편집기 개발</li>
+        <li>1991년 최초의 웹사이트가 만들어짐.</li>
+      </ul>
+      <h3>
+        <a
+          href="https://ko.wikipedia.org/wiki/%ED%8C%80_%EB%B2%84%EB%84%88%EC%8A%A4%EB%A6%AC"
+          >위키백과</a
+        >
+      </h3>
+    </section>
+    <!-- section3 end -->
+
+    <hr />
+    <!-- section4 start -->
+    <section>
+      <h2>4. 개인정보 수집 폼</h2>
+      <span>아래 양식을 작성하여 개인정보를 제출하세요.</span>
+      <form action="">
+        <!-- 이름 -->
+        <label for="name">이름</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          value="name"
+          placeholder="이름을 입력하세요"
+        />
+
+        <!-- 이메일 -->
+        <br />
+        <label for="email">이메일</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          value="email"
+          placeholder="이메일을 입력하세요"
+        />
+
+        <!-- 생년월일 -->
+        <br />
+        <label for="birth">생년월일</label>
+        <input type="date" name="birth" id="birth" value="birth" />
+
+        <!-- 성별 -->
+        <br />
+        <label for="male">남성</label>
+        <input type="radio" name="gender" id="male" value="male" />
+        <label for="female">여성</label>
+        <input type="radio" name="gender" id="female" value="female" />
+
+        <!-- 개인정보 수집 -->
+        <br />
+        <label for="ok">개인정보 수집 및 이용에 동의합니다.</label>
+        <input type="checkbox" />
+
+        <!-- 제출 -->
+        <br />
+        <input type="submit" />
+      </form>
+    </section>
+    <!-- section4 end -->
+  </body>
+</html>

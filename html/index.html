@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>원성준 홈페이지</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      color: black;
+      text-align: center;
+    }
+    img {
+      width: 100%;
+    }
+    ul,
+    li {
+      list-style: none;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      text-align: center;
+      width: 10%;
+      float: left;
+    }
+
+    nav ul {
+      width: 20%;
+    }
+    nav ul li {
+      width: 50%;
+      text-align: center;
+      float: left;
+    }
+
+    main {
+      width: 60%;
+      margin: 0 auto;
+    }
+    .section1 {
+      display: flex;
+    }
+    .section1 div {
+      width: 40%;
+    }
+    .section1 div img {
+      border-radius: 7% 5% 7% 5%;
+    }
+    .section1 p {
+      width: 60%;
+    }
+  </style>
+  <body>
+    <header>
+      <nav>
+        <h1>
+          <a href="">로고</a>
+        </h1>
+
+        <ul>
+          <li><a href="">홈</a></li>
+          <li><a>프로덕트</a></li>
+        </ul>
+      </nav>
+
+      <img src="assets/apparel.png" alt="" width="100%" height="500px" />
+    </header>
+
+    <main>
+      <!-- section1 -->
+      <section class="section1">
+        <div class="image_box">
+          <img src="assets/apparel2.jpg" alt="" />
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
+          aliquam in iure odit, accusantium officia incidunt quaerat, sit quis
+          voluptas provident, similique rem quisquam ipsa repellendus sint ex
+          quos quibusdam.
+        </p>
+      </section>
+
+      <!-- section2 -->
+      <section>
+        <h3>두 번째 글 머리말</h3>
+        <div class="left_container">
+          <div>usernaim</div>
+          <input type="text" />
+          <div>email</div>
+          <input type="email" />
+        </div>
+
+        <div class="right_container">
+          <img src="assets/apparel3.jpg" alt="" />
+        </div>
+      </section>
+
+      <!-- section3 -->
+      <section>
+        <h3>세 번째 글 머리말</h3>
+        <ul>
+          <li>
+            <a href=""
+              ><img src="assets/circle.png" alt="" />
+              <span>1번쨰 항목</span>
+            </a>
+          </li>
+          <li>
+            <a href=""
+              ><img src="assets/clock.png" alt="" />
+              <span>2번쨰 항목</span>
+            </a>
+          </li>
+          <li>
+            <a href=""
+              ><img src="assets/mail.png" alt="" />
+              <span>3번쨰 항목</span>
+            </a>
+          </li>
+          <li>
+            <a href=""
+              ><img src="assets/telephone.png" alt="" />
+              <span>4번쨰 항목</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer>my all rights reserved</footer>
+  </body>
+</html>
