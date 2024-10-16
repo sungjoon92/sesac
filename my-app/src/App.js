@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 // 라우터
 import { Routes, Route, Link } from 'react-router-dom';
-// import React, { useEffect, useState } from 'react';
 
 // css
 import './styles/Home.css';
@@ -11,6 +10,12 @@ import Home from './pages/Home';
 import Second from './pages/Second';
 import Sungsan from './pages/Sungsan';
 import Position from './pages/Position';
+import Flex from './pages/Flex';
+<script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"
+></script>;
 
 function App() {
   // useEffect(() => {
@@ -18,6 +23,8 @@ function App() {
   //     .then((response) => response.text())
   //     .then((data) => setMessage(data));
   // }, []);
+  // 서브메뉴 표시 여부를 관리하는 상태
+  const [showSubmenu, setShowSubmenu] = useState(false);
 
   return (
     <div className="App">
@@ -25,7 +32,7 @@ function App() {
         <h1 id="logo">성준 메인페이지 </h1>
 
         <nav>
-          <ul>
+          <ul className="menu">
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -35,8 +42,18 @@ function App() {
             <li>
               <Link to="Sungsan">Sungsan</Link>
             </li>
-            <li>
+            <li
+              onMouseEnter={() => setShowSubmenu(true)} // 마우스 오버 시 서브메뉴 표시
+              onMouseLeave={() => setShowSubmenu(false)} // 마우스 아웃 시 서브메뉴 숨김
+            >
               <Link to="Position">Position</Link>
+              {showSubmenu && (
+                <ul className="submenu">
+                  <li>
+                    <Link to="Flex">Flex</Link>
+                  </li>
+                </ul>
+              )}
             </li>
           </ul>
         </nav>
@@ -47,6 +64,7 @@ function App() {
         <Route path="Second" element={<Second />}></Route>
         <Route path="Sungsan" element={<Sungsan />}></Route>
         <Route path="Position" element={<Position />}></Route>
+        <Route path="Flex" element={<Flex />}></Route>
       </Routes>
 
       <main></main>
