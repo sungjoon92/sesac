@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 50%;
+        margin: 2% auto;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .card {
+        background-color: lightgray;
+        width: 30%;
+      }
+
+      .card > img {
+        width: 100%;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      .flex {
+        display: flex;
+      }
+      .flex-direction-column {
+        flex-direction: column;
+      }
+
+      .space-between {
+        justify-content: space-between;
+      }
+      hr {
+        margin: 3% auto;
+      }
+      .red {
+        color: red;
+      }
+      .menu-container {
+        width: 50%;
+        margin: 5% auto 0 auto;
+      }
+      .menu-container h2 {
+        margin: 1% 0 1% 0;
+      }
+      .menu-container h2,
+      .menu-container h3 {
+        text-align: center;
+      }
+      .coffee ul li,
+      .ADE ul li {
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <img src="https://picsum.photos/200/300?random=1" />
+        <h2>카드 1</h2>
+        <p>카드의 내용을 작성하세요.</p>
+      </div>
+      <div class="card">
+        <img src="https://picsum.photos/200/300?random=2" />
+        <h2>카드 2</h2>
+        <p>카드의 내용을 작성하세요.</p>
+      </div>
+      <div class="card">
+        <img src="https://picsum.photos/200/300?random=3" />
+        <h2>카드 3</h2>
+        <p>카드의 내용을 작성하세요.</p>
+      </div>
+    </div>
+
+    <div class="menu-container">
+      <h2 class="red">MENU</h2>
+      <h3>COFFEE</h3>
+      <hr />
+      <!-- coffee -->
+      <div class="coffee flex space-between">
+        <ul class="flex flex-direction-column space-between">
+          <li>아메리카노</li>
+          <li>카페라떼</li>
+          <li>바닐라라떼</li>
+          <li>카라멜마끼아또</li>
+        </ul>
+        <ul class="flex flex-direction-column space-between">
+          <li>5.0/5.5</li>
+          <li>6.0/6.5</li>
+          <li>6.0/6.5</li>
+          <li>6.5/7.0</li>
+        </ul>
+      </div>
+
+      <h3>ADE</h3>
+      <hr />
+      <!-- ADE -->
+      <div class="ADE flex space-between">
+        <ul class="flex flex-direction-column space-between">
+          <li>레몬에이드</li>
+          <li>자몽에이드</li>
+          <li>유자에이드</li>
+        </ul>
+        <ul class="flex flex-direction-column space-between">
+          <li>6.0</li>
+          <li>6.0</li>
+          <li>6.5</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

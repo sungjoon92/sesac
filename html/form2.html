@@ -13,9 +13,10 @@
         return false;
       }
 
-      let view = document.getElementsByName('room_type').value;
-
-      if (view === none) {
+      // 선택된 라디오 버튼을 찾음
+      let roomType = document.querySelector('input[name="room_type"]:checked');
+      // 선택된 라디오 버튼이 없으면 경고창 표시
+      if (!roomType) {
         alert('객실 타입을 선택해주세요.');
         return false;
       }
@@ -59,6 +60,7 @@
 
         <label for="lake">레이크뷰 :</label>
         <input type="radio" name="room_type" id="lake" value="lake" />
+
         <label for="mountain">마운틴뷰 :</label>
         <input type="radio" name="room_type" id="mountain" value="mountain" />
       </div>

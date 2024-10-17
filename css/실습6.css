@@ -4,6 +4,9 @@
   clear: both;
 }
 
+a {
+  text-decoration: none;
+}
 li {
   list-style: none;
 }
@@ -29,8 +32,8 @@ header {
   align-items: center;
 }
 
-nav ul {
-  width: 150px;
+nav ul li {
+  padding-right: 10%;
 }
 
 .header-img > img {
