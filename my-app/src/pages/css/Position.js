@@ -1,6 +1,6 @@
 import React from 'react';
 // css
-import '../styles/Position.css';
+import '../../styles/Position.css';
 function Position() {
   return (
     <div class="container">
