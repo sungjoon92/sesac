@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .flex {
+        width: 500px;
+        height: 500px;
+        margin: 0 auto;
+
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #000;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        top: 50%;
+        left: 50%;
+        transition: all 1s ease;
+        transform-origin: center center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="flex">
+      <div class="box"></div>
+    </div>
+
+    <input type="text" />
+    <script>
+      let box = document.getElementsByClassName('box')[0];
+      box = document.querySelector('.box');
+      input = document.querySelector('input[type="text"]');
+
+      box.addEventListener('mouseover', function () {
+        box.style.backgroundColor = 'blue';
+        box.style.width = '200px';
+        box.style.height = '200px';
+
+        box.style.borderRadius = '100px';
+
+        box.style.transform = 'rotate(180deg)';
+      });
+
+      box.addEventListener('mouseout', function () {
+        box.style.backgroundColor = 'red';
+        box.style.width = '100px';
+        box.style.height = '100px';
+        box.style.borderRadius = '0px';
+        box.style.transform = 'rotate(0deg)';
+      });
+
+      input.addEventListener('click', function () {
+        input.style.opacity = '0%';
+        input.style.width = '100px';
+      });
+    </script>
+  </body>
+</html>
