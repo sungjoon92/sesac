@@ -33,7 +33,7 @@ header {
 }
 
 nav ul li {
-  padding-right: 10%;
+  margin-right: 10%;
 }
 
 .header-img > img {
@@ -107,11 +107,11 @@ h2 {
 }
 
 .more-box ul li {
-  height: 100%;
+  width: 20%;
 }
+
 .more-box ul li a img {
-  width: 40%;
-  height: 100%;
+  width: 50%;
 }
 .more-box span {
   display: block;
@@ -124,3 +124,18 @@ footer {
   text-align: center;
 }
 /* footer end */
+
+@media (max-width: 800px) {
+  main {
+    width: 100%;
+  }
+  h1 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 20px;
+  }
+}
