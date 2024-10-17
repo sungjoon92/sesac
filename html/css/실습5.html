@@ -4,114 +4,183 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        clear: both;
-      }
-      .main_box {
-        margin: 3% auto;
-        width: 70%;
-      }
-      .box {
-        width: 100px;
-        height: 100px;
-        border: 1px solid #000;
-      }
-      hr {
-        margin: 3% auto;
-      }
-
-      .box1 {
-        padding: 1%;
-        box-sizing: border-box;
-      }
-      .box2 {
-        text-align: center;
-        line-height: 100px;
-      }
-      .box3 {
-        margin: 0 auto;
-      }
-      .around {
-        width: 350px;
-        display: flex;
-        justify-content: space-around;
-      }
-      .between {
-        display: flex;
-        justify-content: space-between;
-      }
-      .flex-box {
-        width: 400px;
-        height: 400px;
-        border: 1px solid black;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-around;
-        box-sizing: border-box;
-        padding: 1%;
-      }
-
-      .l_r-box {
-        display: flex;
-        justify-content: space-around;
-      }
-
-      .item1 {
-        margin-right: auto;
-      }
-      .item2 {
-        margin-right: 2%;
-      }
-    </style>
+    <link rel="stylesheet" href="flex_실습.css" />
   </head>
+
+  <style>
+    .space {
+      height: 1000px;
+    }
+    .box {
+      width: 200px;
+      height: 200px;
+      margin: 20px;
+      border: 1px solid;
+      box-sizing: border-box;
+    }
+
+    .big-box {
+      width: 1000px;
+      height: 1000px;
+      border: 1px solid black;
+    }
+
+    .padding {
+      padding: 20px;
+    }
+
+    .text-center {
+      text-align: center;
+      line-height: 200px;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .flex-center {
+      justify-content: center;
+      align-items: center;
+    }
+
+    .justify-content-center {
+      justify-content: center;
+    }
+
+    .align-items-center {
+      align-items: center;
+    }
+
+    .justify-content-between {
+      justify-content: space-between;
+    }
+
+    .flex-column {
+      flex-direction: column;
+    }
+  </style>
   <body>
-    <h1>실습 과제5</h1>
-    <div class="main_box">
-      <div class="box1 box">content</div>
-      <hr />
+    <div class="box padding">content</div>
+    <br /><br />
+    <hr />
+    <br /><br />
 
-      <div class="box2 box">content</div>
-      <hr />
+    <div class="box text-center">content</div>
 
-      <div class="box3 box"></div>
-      <hr />
+    <br /><br />
+    <hr />
+    <br /><br />
 
-      <div class="around">
+    <div class="box flex flex-center">
+      <div>content</div>
+    </div>
+    <div class="box flex flex-center">content</div>
+
+    <br /><br />
+    <hr />
+    <br /><br />
+
+    <div class="flex justify-content-center">
+      <div class="box"></div>
+    </div>
+    <br /><br />
+    <hr />
+    <br /><br />
+
+    <div class="flex">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+    <br /><br />
+    <hr />
+    <br /><br />
+
+    <div class="flex justify-content-between">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+    <br /><br />
+    <hr />
+    <br /><br />
+
+    <div
+      class="big-box flex flex-column justify-content-center align-items-center"
+    >
+      <div class="flex">
         <div class="box"></div>
         <div class="box"></div>
         <div class="box"></div>
       </div>
-      <hr />
-
-      <div class="between">
+      <div class="flex">
         <div class="box"></div>
         <div class="box"></div>
         <div class="box"></div>
       </div>
-      <hr />
-
-      <div class="flex-box">
+      <div class="flex">
         <div class="box"></div>
         <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-      </div>
-      <hr />
-
-      <div class="l_r-box">
-        <div class="box item1"></div>
-        <div class="box item2"></div>
         <div class="box"></div>
       </div>
     </div>
+    <br /><br />
+    <hr />
+    <br /><br />
+
+    <div class="big-box flex justify-content-center align-items-center">
+      <div>
+        <div class="flex">
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+        </div>
+        <div class="flex">
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+        </div>
+        <div class="flex">
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+        </div>
+      </div>
+    </div>
+
+    <br /><br />
+    <hr />
+    <br /><br />
+
+    <div class="big-box flex justify-content-center align-items-center">
+      <div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+      <div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+      <div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+    </div>
+    <br /><br />
+    <hr />
+    <br /><br />
+
+    <div class="flex justify-content-between">
+      <div class="box"></div>
+      <div class="flex">
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+    </div>
+
+    <div class="space"></div>
   </body>
 </html>
