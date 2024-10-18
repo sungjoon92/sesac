@@ -13,11 +13,6 @@ import Second from './pages/html/html';
 import Sungsan from './pages/Sungsan';
 import Position from './pages/css/Position';
 import Flex from './pages/css/Flex';
-<script
-  src="https://code.jquery.com/jquery-3.7.1.js"
-  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-  crossorigin="anonymous"
-></script>;
 
 function App() {
   // useEffect(() => {
@@ -72,7 +67,7 @@ function App() {
 
               <ul className="submenu">
                 <li>
-                  <Link to="" target="_blank">
+                  <Link to="" target="">
                     test
                   </Link>
                 </li>

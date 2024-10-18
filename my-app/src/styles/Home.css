@@ -9,10 +9,15 @@ a {
   color: black;
 }
 
+h2 {
+  text-align: center;
+  margin: 1% auto;
+}
 #header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 1%;
 }
 
 #header-top h2 {
