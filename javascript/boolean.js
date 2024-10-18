@@ -14,7 +14,7 @@ if (ondo < 22) {
 }
 
 if (money > 10000) {
-  console.log('치킨'); 
+  console.log('치킨');
 } else if (money > 5000) {
   console.log('라면');
 } else if (money > 1000) {
