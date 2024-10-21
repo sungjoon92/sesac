@@ -1,4 +1,4 @@
-// const nums = [10, 6, 8, 5, 4, 2, 3, 11];
+const nums = [10, 6, 8, 5, 4, 2, 3, 11];
 
 // let min = nums[0]; //10
 // for (let index of nums) {
@@ -9,14 +9,14 @@
 //   console.log(num);
 // }
 
-// for (i = 0; i < nums.length; i++) {
-//   let num = nums[i];
-//   if (min > num) {
-//     min = num;
-//     console.log('제발');
-//   }
-// }
-// console.log(min);
+for (i = 0; i < nums.length; i++) {
+  let num = nums[i];
+  if (min > num) {
+    min = num;
+    console.log('제발');
+  }
+}
+console.log(min);
 
 // let result = [];
 // let max = nums2[0];
