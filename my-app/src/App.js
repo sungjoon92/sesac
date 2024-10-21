@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 // 라우터
 import { Routes, Route, Link } from 'react-router-dom';
 
@@ -13,6 +13,7 @@ import Second from './pages/html/html';
 import Sungsan from './pages/Sungsan';
 import Position from './pages/css/Position';
 import Flex from './pages/css/Flex';
+import For from './pages/javascript/For';
 
 function App() {
   // useEffect(() => {
@@ -21,7 +22,6 @@ function App() {
   //     .then((data) => setMessage(data));
   // }, []);
   // 서브메뉴 표시 여부를 관리하는 상태
-  const [showSubmenu, setShowSubmenu] = useState(false);
 
   return (
     <div className="App">
@@ -67,8 +67,8 @@ function App() {
 
               <ul className="submenu">
                 <li>
-                  <Link to="" target="">
-                    test
+                  <Link to="For" target="">
+                    box색상 변경
                   </Link>
                 </li>
               </ul>
@@ -85,6 +85,7 @@ function App() {
         <Route path="Sungsan" element={<Sungsan />}></Route>
         <Route path="Position" element={<Position />}></Route>
         <Route path="Flex" element={<Flex />}></Route>
+        <Route path="For" element={<For />}></Route>
       </Routes>
 
       <main></main>
