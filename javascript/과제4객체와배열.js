@@ -21,14 +21,30 @@ const todos = [
 for (let index of todos) {
   console.log(index);
 }
+console.log('---------객체와 배열 2--------');
 
 // 객체와 배열 2
 for (let index of todos) {
-  let cont = index.content;
-  let comple = index.isCompleted;
-  console.log(cont, comple);
+  console.log(
+    'content: ' + index.content + ', isCompleted: ' + index.isCompleted
+  );
 }
 
+console.log('---------객체와 배열 3--------');
 // 객체와 배열 3
+
+for (let index of todos) {
+  if (index.todoId === 2) {
+    console.log(index);
+  }
+}
+
+console.log('---------객체와 배열 4--------');
 // 객체와 배열 4
-// 객체와 배열 5
+for (let index of todos) {
+  if (index.todoId === 2) {
+    index.isCompleted = true;
+  }
+  console.log(index);
+}
+console.log('--------객체와 배열 5--------');
