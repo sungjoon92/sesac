@@ -75,7 +75,15 @@ if (money > 10000) {
   console.log('라면');
 } else if (money > 1000) {
   console.log('과자');
+} else if (money > 100) {
+  console.log('추파춥스');
 } else {
+  console.log('돈좀 주세요');
 }
 
-
+if (money > 10000) {
+  console.log('치킨');
+  if (money > 5000) {
+    console.log('라면');
+  }
+}
