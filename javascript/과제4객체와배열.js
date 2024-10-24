@@ -47,4 +47,3 @@ for (let index of todos) {
   }
   console.log(index);
 }
-console.log('--------객체와 배열 5--------');
