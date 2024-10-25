@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+.flex {
+  display: flex;
+}
+
+.center {
+  align-items: center;
+}
+#main {
+  width: 80%;
+  margin: 0 auto;
+  background-color: antiquewhite;
+}
+
+.header-top {
+  background-color: aquamarine;
+  justify-content: space-between;
+}
+
+header form {
+  width: 90%;
+  margin: 1% auto;
+  border-radius: 10px;
+}
+
+form input[type='text'] {
+  width: 80%;
+}
+form input[type='button'] {
+  width: 20%;
+}
+nav {
+  width: 75%;
+  margin: 1% auto;
+}
+nav ul {
+  display: flex;
+  justify-content: space-between;
+}
+nav ul li {
+  width: 100%;
+  text-align: center;
+}
+
+nav ul li img {
+  width: 100%;
+}
