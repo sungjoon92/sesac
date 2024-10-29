@@ -3,7 +3,7 @@ async function getNowPlayingMovies() {
     const baseURL = 'https://api.themoviedb.org/3/movie';
     const path = '/now_playing';
     const params = new URLSearchParams({
-      api_key: 'eab8c9893e725b2e167187cef66bae3d',
+      api_key: '3b7e5eb620d6d28a0a820a15350f2989',
       language: 'ko',
     });
 
