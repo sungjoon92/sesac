@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .font {
+        font-size: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="" alt="강아지 사진" />
+    <!-- 
+      다음 api를 참고하여 img태그에 강아지 사진을 넣어주세요.
+      https://dog.ceo/dog-api/ 
+    -->
+
+    <script>
+      async function dog() {
+        const URL = 'https://dog.ceo/api/breeds/image/random';
+        const res = await fetch(URL);
+        const data = await res.json();
+        const dogimg = data.message;
+        console.log(dogimg);
+        const img = document.querySelector('img');
+        img.style.width = '50%';
+
+        // img.src = dogimg
+        img.setAttribute('src', dogimg);
+      }
+      dog();
+      setInterval(dog, 2000);
+    </script>
+  </body>
+</html>
