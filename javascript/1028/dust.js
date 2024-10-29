@@ -1,30 +1,53 @@
-const baseURL = 'http://apis.data.go.kr/B552584/ArpltnStatsSvc';
-const params = new URLSearchParams({
-  // 'sU2jtPOTQI1lNQtQwwNH5FR2Rf0%2Bl%2FAX9M4%2FA%2BL7%2FK1HAxybD0BVOVtotamccTeMgbws24Zq1At5koZUypbw4g%3D%3D',
-  serviceKey:
-    'sU2jtPOTQI1lNQtQwwNH5FR2Rf0+l/AX9M4/A+L7/K1HAxybD0BVOVtotamccTeMgbws24Zq1At5koZUypbw4g==',
-  returnType: 'json',
-  numOfRows: 100,
-  pageNo: 1,
-  sidoName: '서울',
-  ver: '1.0',
-});
+// const baseURL = 'https://apis.data.go.kr/B552584/ArpltnStatsSvc';
+// const params = new URLSearchParams({
+//   serviceKey:
+//     'sU2jtPOTQI1lNQtQwwNH5FR2Rf0+l/AX9M4/A+L7/K1HAxybD0BVOVtotamccTeMgbws24Zq1At5koZUypbw4g==',
+//   returnType: 'json',
+//   numOfRows: 100,
+//   pageNo: 1,
+//   sidoName: '%EC%84%9C%EC%9A%B8',
+//   searchCondition: 'DAILY',
+// });
 
 async function getRegion() {
-  const path = '/getMsrstnAcctoRDyrg';
-  let URL = `${baseURL}${path}?${params}`;
-  // let URL =
-  //   'https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getMinuDustFrcstDspth?serviceKey=sU2jtPOTQI1lNQtQwwNH5FR2Rf0%2Bl%2FAX9M4%2FA%2BL7%2FK1HAxybD0BVOVtotamccTeMgbws24Zq1At5koZUypbw4g%3D%3D&returnType=json';
+  // const path = '/getCtprvnMesureSidoLIst';
+  // let URL = `${baseURL}${path}?${params}`;
+
+  const URL =
+    'https://apis.data.go.kr/B552584/ArpltnStatsSvc/getCtprvnMesureSidoLIst?serviceKey=sU2jtPOTQI1lNQtQwwNH5FR2Rf0%2Bl%2FAX9M4%2FA%2BL7%2FK1HAxybD0BVOVtotamccTeMgbws24Zq1At5koZUypbw4g%3D%3D&returnType=json&numOfRows=100&pageNo=1&sidoName=%EC%84%9C%EC%9A%B8&searchCondition=DAILY';
+
   const response = await fetch(URL);
   const data = await response.json();
-  // const items = data.response.body.items;
-  // for (let item of items) {
-  //   console.log(item.sidoName);
-  // }
-  console.log(data);
+  const items = data.response.body.items;
+
+  for (let item of items) {
+    console.log(item.sidoName);
+  }
+
+  return items;
 }
 
-getRegion();
+async function minpm() {
+  // const path = '/getCtprvnMesureSidoLIst';
+  // let URL = `${baseURL}${path}?${params}`;
+
+  // const URL =
+  //   'https://apis.data.go.kr/B552584/ArpltnStatsSvc/getCtprvnMesureSidoLIst?serviceKey=sU2jtPOTQI1lNQtQwwNH5FR2Rf0%2Bl%2FAX9M4%2FA%2BL7%2FK1HAxybD0BVOVtotamccTeMgbws24Zq1At5koZUypbw4g%3D%3D&returnType=json&numOfRows=100&pageNo=1&sidoName=%EC%84%9C%EC%9A%B8&searchCondition=DAILY';
+
+  // const response = await fetch(URL);
+  // const data = await response.json();
+  const items = await getRegion();
+
+  let minpm = Infinity;
+  for (let item of items) {
+    // console.log(item.pm10Value);
+    if (item.pm10Value < minpm) {
+      minpm = item.pm10Value;
+      console.log(minpm);
+    }
+  }
+}
+minpm();
 /*
 - 영화의 리스트를 입력받아서 vote_average가 가장 높은 영화를 반환한다.
 */
