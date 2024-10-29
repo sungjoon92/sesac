@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="">
+      <button id="my-button">클릭</button>
+    </a>
+
+    <a id="b" href="">
+      <button id="c">list 실험</button>
+    </a>
+    <script>
+      const button = document.querySelector('#my-button');
+      const naver = document.querySelector('a');
+      button.addEventListener('click', function () {
+        alert('이벤트 리스너로 등록된 클릭 이벤트 1');
+        //안됨
+        // naver.setAttribute({ href: 'https://www.naver.com', target: '_blank' });
+
+        naver.setAttribute('href', 'https://www.naver.com');
+
+        naver.setAttribute('target', '_blank');
+
+        console.log(naver);
+      });
+
+      const b = document.querySelector('#b');
+      b.addEventListener('click', function () {
+        b.classList.add('naver');
+        b.classList.add('google');
+        const bClass = b.classList;
+        for (let bList of bClass) {
+          alert(bList);
+        }
+      });
+    </script>
+  </body>
+</html>
