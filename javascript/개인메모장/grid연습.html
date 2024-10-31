@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Grid 7행 예제</title>
+    <style>
+      .grid-container {
+        display: grid;
+        grid-template-rows: repeat(7, 1fr); /* 7행 생성 */
+        grid-template-columns: repeat(4, 1fr); /* 7행 생성 */
+        grid-gap: 10px; /* 행 간의 간격 */
+        height: 100vh; /* 전체 화면 높이 */
+      }
+
+      .grid-item {
+        background-color: #4caf50;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        border: 1px solid #333;
+      }
+    </style>
+  </head>
+  <body>
+    @
+    <div class="grid-container">
+      <div class="grid-item">행 1</div>
+      <div class="grid-item">행 2</div>
+      <div class="grid-item">행 3</div>
+      <div class="grid-item">행 4</div>
+      <div class="grid-item">행 5</div>
+      <div class="grid-item">행 6</div>
+      <div class="grid-item">행 7</div>
+      <div class="grid-item">행 1</div>
+      <div class="grid-item">행 2</div>
+      <div class="grid-item">행 3</div>
+      <div class="grid-item">행 4</div>
+      <div class="grid-item">행 5</div>
+      <div class="grid-item">행 6</div>
+      <div class="grid-item">행 7</div>
+      <div class="grid-item">행 1</div>
+      <div class="grid-item">행 2</div>
+      <div class="grid-item">행 3</div>
+      <div class="grid-item">행 4</div>
+      <div class="grid-item">행 5</div>
+      <div class="grid-item">행 6</div>
+      <div class="grid-item">행 7</div>
+      <div class="grid-item">행 1</div>
+      <div class="grid-item">행 2</div>
+      <div class="grid-item">행 3</div>
+      <div class="grid-item">행 4</div>
+      <div class="grid-item">행 5</div>
+      <div class="grid-item">행 6</div>
+      <div class="grid-item">행 7</div>
+    </div>
+  </body>
+</html>
