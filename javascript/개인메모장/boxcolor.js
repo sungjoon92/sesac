@@ -45,7 +45,7 @@ let green = '#00FF00';
 let yellow = '#FFFF00';
 let red = '#FF0000';
 
-const dust = 20;
+const dust = 40;
 
 document.addEventListener('DOMContentLoaded', function () {
   if (dust <= 50) {
