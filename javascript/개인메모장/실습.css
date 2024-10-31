@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+  margin: 1%;
+}
+.movie-container {
+  width: 80%;
+  margin: 0 auto;
+}
+.movie-box {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.movie-box li {
+  width: 200px;
+  height: 170px;
+  margin-bottom: 1%;
+  text-align: center;
+  font-weight: bold;
+}
+.movie-box li a {
+}
+
+.movie-box li a img {
+  width: 100%;
+}
