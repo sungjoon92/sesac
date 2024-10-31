@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .card {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px;
+        width: 200px;
+      }
+
+      .card-title {
+        font-weight: bold;
+      }
+
+      .card-body {
+        color: #666;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Services 항목을 추가하시오. -->
+    <ul id="menu">
+      <li>Home</li>
+      <li>About</li>
+    </ul>
+
+    <script>
+      // 1. li 만들고
+      // 2. li의 text를 services로 넣고
+      // 3. menu 선택
+      // 4. li를 menu에 넣기
+      const liTag = document.createElement('li');
+      liTag.textContent = 'Services';
+      const menuTag = document.querySelector('#menu');
+      menuTag.append(liTag);
+    </script>
+
+    <!-- 아래 배열의 각 항목을 메뉴에 추가하세요 -->
+    <ul id="menu-2">
+      <li>Home</li>
+      <li>About</li>
+    </ul>
+    <script>
+      const newItems = ['Services', 'Products', 'Contact'];
+      const menu2Tag = document.querySelector('#menu-2');
+
+      newItems.forEach((el, idx) => {
+        const liTag = document.createElement('li');
+        liTag.textContent = el;
+        // menu2Tag.append(liTag);
+
+        setTimeout(() => {
+          menu2Tag.append(liTag);
+        }, (idx + 1) * 1000);
+      });
+    </script>
+  </body>
+</html>
