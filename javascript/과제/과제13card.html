@@ -131,7 +131,7 @@
 
     <script>
       async function dog() {
-        const URL = 'https://dog.ceo/api/breeds/image/random';
+        const URL = `https://dog.ceo/api/breeds/image/random/6`;
         const res = await fetch(URL);
         const data = await res.json();
         //강아지 이미지 뽑아오기
