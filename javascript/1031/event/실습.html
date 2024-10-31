@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+      }
+
+      .container {
+        margin: 1rem;
+        padding: 1rem;
+      }
+      .none {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- html 코드도 자유롭게 수정하세요! -->
+
+    <!-- button을 클릭하면 원본 텍스트가 "텍스트가 바뀜"으로 변하도록 구현하시오. -->
+    <div class="container1">
+      <div>바뀔 예정인 텍스트</div>
+      <button>클릭</button>
+    </div>
+
+    <!-- 무언가를 클릭하면 원본 텍스트가 빨간색으로, 다른 무언가를 클릭하면 원본 텍스트가 파란색으로 변하도록 구현하시오. -->
+    <div class="container2">
+      <div>이 텍스트의 색상을 바꾸세요!</div>
+      <button class="red">red</button>
+      <button class="blue">blue</button>
+    </div>
+
+    <!-- button을 클릭하면 텍스트가 보였다 안보였다 바뀌도록 구현하시오. -->
+    <!-- display : none 속성 및 class를 활용합니다. -->
+    <div class="container3">
+      <div>보였다 안보였다</div>
+      <button>클릭</button>
+    </div>
+
+    <!-- 입력을 하면 입력한 text가 아래의 div태그에 표현되도록 바꾸시오. -->
+    <!-- hint : input의 입력값은 value로 표현된다. -->
+    <div class="container4">
+      <input type="text" />
+      <div>왜 안나와</div>
+    </div>
+
+    <!-- 마우스를 올리면 배경색이 빨간색으로 변하고, 내리면 다시 검정색으로 변하는 기능을 구현하시오. -->
+    <div class="container5">
+      <div class="box"></div>
+    </div>
+
+    <!-- 버튼을 누르면 숫자가 1 증가하는 기능을 구현하시오 -->
+    <div class="container6">
+      <div>0</div>
+      <button>버튼</button>
+    </div>
+
+    <!-- 색상을 입력하면 텍스트의 색이 변하는 기능을 구현하시오. -->
+    <div class="container7">
+      <h1>what color am I</h1>
+      <input type="text" />
+      <input type="color" />
+    </div>
+
+    <script>
+      // 1번
+      const text1 = document.querySelector('.container1 > div');
+      const button1 = document.querySelector('.container1 > button');
+      button1.addEventListener('click', (event) => {
+        text1.textContent = '배부르다';
+      });
+
+      // 2번
+      const text2 = document.querySelector('.container2 > div');
+      const buttonRed = document.querySelector('.container2 > button.red');
+      const buttonBlue = document.querySelector('.container2 > button.blue');
+      buttonRed.addEventListener('click', (event) => {
+        text2.style.color = 'red';
+      }),
+        buttonBlue.addEventListener('click', (event) => {
+          text2.style.color = 'blue';
+        });
+
+      //3번
+      const text3 = document.querySelector('.container3 > div');
+      const toggleButton = document.querySelector('.container3 > button');
+
+      // let flag = true;
+      // toggleButton.addEventListener('click', (event) => {
+      //   if (flag === true) {
+      //     text3.style.display = 'none';
+      //     flag = false;
+      //   } else {
+      //     text3.style.display = 'block';
+      //     flag = true;
+      //   }
+      // });
+
+      toggleButton.addEventListener('click', (event) => {
+        text3.classList.toggle('none');
+      });
+
+      //4번
+
+      const inputText = document.querySelector('.container4 > input');
+      const text4 = document.querySelector('.container4 > div');
+      inputText.addEventListener('input', (event) => {
+        text4.textContent = inputText.value;
+      });
+
+      //5번
+      const box = document.querySelector('.container5 > div');
+
+      box.addEventListener('mouseover', (event) => {
+        box.style.backgroundColor = 'red';
+      });
+      box.addEventListener('mouseout', (event) => {
+        box.style.backgroundColor = 'black';
+      });
+
+      //6번
+      const number = document.querySelector('.container6 > div');
+      const numButton = document.querySelector('.container6 > button');
+
+      let count = 0;
+      numButton.addEventListener('click', (event) => {
+        count += 1;
+
+        number.innerHTML = count;
+        console.log();
+      });
+
+      //7번
+      const h1 = document.querySelector('.container7 > h1');
+      const colorInputText = document.querySelector(
+        '.container7 > input[type="text"]'
+      );
+      const colorInput = document.querySelector(
+        '.container7 > input[type="color"]'
+      );
+      colorInputText.addEventListener('input', (event) => {
+        color = colorInputText.value;
+        h1.style.color = or;
+        colorInput.value = color;
+        console.log(colorInput);
+      });
+      colorInput.addEventListener('input', (event) => {
+        color = colorInput.value;
+        h1.style.color = color;
+        colorInputText.value = color;
+      });
+    </script>
+  </body>
+</html>
