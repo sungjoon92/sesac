@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+    #seat-contianer {
+      width: 80%;
+      margin: 0 auto;
+    }
+    .number-box {
+      grid-template-columns: repeat(4, 1fr); /* 7열 설정 */
+      grid-template-rows: repeat(7, 1fr); /* 7행 생성 */
+      text-align: center;
+      display: grid;
+      gap: 10px; /* 아이템 사이의 간격 */
+      padding: 20px;
+    }
+    li {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      list-style: none;
+    }
+  </style>
+  <body>
+    <div id="seat-contianer">
+      <ul class="number-box"></ul>
+    </div>
+  </body>
+  <script>
+    let peple = [
+      '가경식',
+      '강경훈',
+      '김동훈',
+      '김상호',
+      '노영재',
+      '박재훈',
+      '박종빈',
+      '박하은',
+      '서승덕',
+      '오예진',
+      '원성준',
+      '육슬찬',
+      '윤대정',
+      '이상호',
+      '이재현',
+      '이태영',
+      '임수빈',
+      '임유진',
+      '정명훈',
+      '정승연',
+      '정여원',
+      '최원호',
+      '차윤선',
+    ];
+    const number = document.querySelector('.number-box');
+    for (let list in peple) {
+      const seat = document.createElement('li');
+      random = Math.floor(Math.random() * peple.length);
+      console.log(random);
+
+      // 특정 id 조건 확인
+      if (list === '0' || list === '11' || list === '15' || list === '19') {
+        // 조건에 맞는 경우, 빈 공간으로 만들기
+        seat.innerHTML = ''; // 빈 문자열로 설정
+      } else {
+        // 조건에 맞지 않는 경우, 좌석 번호 추가
+        seat.innerHTML = random;
+      }
+      seat.id = list; // id 설정
+      number.append(seat); // 좌석 추가
+      // seat.textContent = peple[list];
+    }
+  </script>
+</html>
