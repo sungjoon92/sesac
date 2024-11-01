@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="reset.css" />
+    <script src="app.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Todo List</h1>
+      <input type="text" id="todo-input" placeholder="새 할 일을 입력하세요" />
+      <br />
+      <button id="add-todo">추가</button>
+      <ul id="todo-list"></ul>
+    </div>
+
+    <script>
+      //todo-input 요소 선택
+      const textBox = document.querySelector('#todo-input');
+      //todo-list 요소 선택
+      const todo_list = document.querySelector('#todo-list');
+      //add-todo 요소 선택
+      const createbut = document.querySelector('#add-todo');
+
+      //fetch를 활용해 주소에 있는 데이터 json 형태로 가져오기
+      async function readTodos() {
+        const response = await fetch('http://localhost:3000/todos');
+        const todos = await response.json();
+        return todos;
+      }
+
+      async function readTodosExample() {
+        const response = await readTodos();
+
+        response.forEach((todo) => {
+          //li태그 추가를 위한 코드
+          const createli = document.createElement('li');
+          //추가된 li태그에 가져온 json.content 추가
+          createli.textContent = `${todo.content}`;
+
+          //완료버튼 생성 및 텍스트와 class 추가
+          const checkButton = document.createElement('button');
+          checkButton.textContent = '완료';
+          checkButton.classList.add('checkButton-button');
+
+          //삭제버튼 생성 및 텍스트와 class추가
+          const deleteButton = document.createElement('button');
+          deleteButton.textContent = '삭제';
+          deleteButton.classList.add('deleteButton-button');
+
+          //생성된 li태그에 button추가
+          createli.appendChild(checkButton);
+          createli.appendChild(deleteButton);
+
+          //ul태그에 생성된 li태그들 추가
+          todo_list.append(createli);
+
+          //checkButton 클릭시 createli의 text에 선긋기
+          checkButton.addEventListener('click', () => {
+            createli.style.textDecoration = 'line-through'; // 중앙선 적용
+          });
+
+          // 삭제 버튼 클릭 시 해당 <li> 요소 삭제
+          async function deletePost() {
+            const response = await fetch(
+              `http://localhost:3000/todos/${todo.id}`,
+              {
+                method: 'DELETE',
+              }
+            );
+          }
+          deleteButton.addEventListener('click', () => {
+            // createli.remove(); // 이 <li> 항목만 제거
+            deletePost(); // 서버에서 항목 삭제 요청
+          });
+        });
+      }
+
+      //내용 추가를 위한 준비
+      async function createTodo(newTodo) {
+        const response = await fetch('http://localhost:3000/todos', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newTodo),
+        });
+        const todo = await response.json();
+        return todo;
+      }
+
+      createbut.addEventListener('click', () => {
+        async function createTodoExample() {
+          const response2 = await readTodos();
+          let count;
+
+          //count 가져온 id보다 +1크게 id가 0인경우 1로 들어가도록 한 코드
+          if (response2 && response2.length > 0) {
+            const maxId = Math.max(
+              ...response2.map((todo) => parseInt(todo.id, 10) || 0)
+            );
+            count = maxId + 1;
+          } else {
+            count = 1;
+          }
+
+          //추가할 데이터를 변수에 넣기
+          let lcount = count.toString();
+          let settest = textBox.value;
+
+          //추가될 내용 작성
+          let newTodo = {
+            id: lcount,
+            content: settest,
+            completed: false,
+          };
+
+          await createTodo(newTodo);
+        }
+
+        createTodoExample();
+      });
+
+      readTodosExample();
+    </script>
+  </body>
+</html>
