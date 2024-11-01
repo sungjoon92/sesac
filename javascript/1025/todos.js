@@ -20,13 +20,12 @@ console.log('-------생성-------');
 async function createPost() {
   try {
     /* https://jsonplaceholder.typicode.com/posts */
-    const response = await fetch('http://localhost:3000/posts', {
+    const response = await fetch('http://localhost:3000/todos', {
       method: 'POST',
       body: JSON.stringify({
-        title: 'foo',
-        body: 'bar',
-        userId: 101,
-        abc: 11,
+        id: '1',
+        content: '예습 하기',
+        completed: false,
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
@@ -40,6 +39,7 @@ async function createPost() {
   }
 }
 createPost();
+
 console.log('-------리스트확인-------');
 
 async function getPosts() {
