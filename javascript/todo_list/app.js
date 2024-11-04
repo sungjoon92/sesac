@@ -63,9 +63,9 @@ function renderTodos(todos) {
 
 //////////////////////////////////////////////////////
 
-// 글 생성
+// 글 생성 클릭 이벤트
 addButton.addEventListener('click', addTodo);
-
+// 글 생성
 async function addTodo() {
   // 입력을 받아다가 => db에 저장하고 => 보여준다.
   const inputTag = document.querySelector('#todo-input');
@@ -77,7 +77,7 @@ async function addTodo() {
 
   inputTag.value = '';
 }
-
+// 글 생성 patch
 async function postTodo(value) {
   const response = await fetch(URL, {
     method: 'POST',
@@ -96,8 +96,7 @@ async function postTodo(value) {
 
 //////////////////////////////////////////////////////
 
-// 수정
-// completed 상태를 변경한다.
+// completed 수정 patch
 async function patchTodo(todo) {
   const { id } = todo;
 
@@ -123,8 +122,24 @@ async function patchTodo(todo) {
 }
 
 //////////////////////////////////////////////////////
+// content 수정 patch
+async function patchContent(todo) {
+  const { id, content } = todo;
+  const responsePatch = await fetch(URL + '/' + id, {
+    method: 'PUT',
+    body: JSON.stringify({
+      content: content,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+  const dataPatch = await responsePatch.json();
+  return dataPatch;
+}
+//////////////////////////////////////////////////////
 
-// 삭제
+// 삭제 patch
 async function deleteTodo(todo) {
   const { id } = todo;
   const response = await fetch(URL + '/' + id, {
@@ -151,7 +166,7 @@ function renderTodo(todo) {
     spanTag.classList.add('completed');
   }
 
-  // complete
+  // complete 수정
   const completeButton = document.createElement('button');
   completeButton.textContent = '완료';
   completeButton.addEventListener('click', async (e) => {
@@ -166,6 +181,27 @@ function renderTodo(todo) {
     }
   });
 
+  // content 수정
+  const contentbutton = document.createElement('button');
+  const contentInput = document.createElement('input');
+  const contentSuccesButton = document.createElement('button');
+
+  // 수정 버튼 클릭시 input 도출
+  contentbutton.textContent = '수정';
+  contentbutton.addEventListener('click', async () => {
+    const data = await patchContent(todo);
+    const { content } = data;
+    liTag.append(contentInput);
+    liTag.append(contentSuccesButton);
+    contentInput.value = content;
+    contentSuccesButton.textContent = '변경';
+
+    // 변경 button 클릭시 contentInput의 값 변경
+    contentSuccesButton.addEventListener('click', async () => {
+      spanTag.textContent = contentInput.value;
+    });
+  });
+
   // delete
   const deleteButton = document.createElement('button');
   deleteButton.textContent = '삭제';
@@ -174,6 +210,6 @@ function renderTodo(todo) {
     liTag.remove();
   });
 
-  liTag.append(spanTag, completeButton, deleteButton);
+  liTag.append(spanTag, completeButton, deleteButton, contentbutton);
   todoListTag.append(liTag);
 }
