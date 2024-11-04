@@ -145,7 +145,7 @@ function renderTodo(todo) {
   // const content = todo.content;
   // const completed = todo.completed;
   const { content, completed } = todo;
-  
+
   spanTag.textContent = content;
   if (completed) {
     spanTag.classList.add('completed');
