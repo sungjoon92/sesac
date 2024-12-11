@@ -124,6 +124,7 @@ async function patchTodo(todo) {
 //////////////////////////////////////////////////////
 // content 수정 patch
 async function patchContent(todo) {
+  console.log(todo);
   const { id, content } = todo;
   const responsePatch = await fetch(URL + '/' + id, {
     method: 'PUT',
@@ -189,6 +190,7 @@ function renderTodo(todo) {
   // 수정 버튼 클릭시 input 도출
   contentbutton.textContent = '수정';
   contentbutton.addEventListener('click', async () => {
+    console.log('haha');
     const data = await patchContent(todo);
     const { content } = data;
     liTag.append(contentInput);
