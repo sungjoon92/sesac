@@ -34,7 +34,7 @@ public class ArrayPractice {
             System.out.println(element);
         }
 
-        // iter
+        // new for문
         for (char element : chars) {
             System.out.println(element);
         }
