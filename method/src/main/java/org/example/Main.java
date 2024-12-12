@@ -105,6 +105,19 @@ public class Main {
         mp3.showMP3();
 
 
+//        계산기
+        CalculatingMachine calculatingMachine = new CalculatingMachine(30,20);
+        calculatingMachine.plus();
+        calculatingMachine.minus();
+        calculatingMachine.multiply();
+        calculatingMachine.divide();
+
+        double result = calculatingMachine.Calculating(30, "-",20);
+
+        System.out.println("계산결과: " + result);
+
+
+
 
     }// main() end
 } // class end
