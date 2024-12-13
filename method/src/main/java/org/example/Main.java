@@ -1,5 +1,15 @@
 package org.example;
 
+import org.example.javaintro.Dog;
+import org.example.practice.Bread;
+//import org.example.practice.Coffee;
+
+//*은 가능하지만 좋지않음
+import org.example.practice.*;
+
+import static java.lang.Math.abs;
+import static org.example.practice.Coffee.*;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -7,6 +17,7 @@ public class Main {
 //               width: 100,
 //                height: 200
 //        };
+
         // 첫 번째 사각형
         int width1 = 10;
         int height1 = 5;
@@ -52,18 +63,23 @@ public class Main {
 
 //        - 견종, 이름을 가지고, “앉아”, “손”을 할 수 있는 `Dog` 클래스를 구현하시오.
 
-        Dog dog = new Dog("턱시도","냥이", "앉아");
-        System.out.println(dog.dogs());
-        dog.seat();
-        dog.hand();
+//        Dog dog = new Dog("턱시도", "냥이", "앉아");
+//        System.out.println(dog.dogs());
+//        dog.seat();
+//        dog.hand();
+//
+//
+//        Dog poppy = new Dog("골든리트리버", "탱이", "물구나무서");
+//        System.out.println(poppy.dogs());
+//        System.out.println(Dog.count + "마리");
 
-
+//        삼각형 구하기
         Triangle triangle = new Triangle(4);
         System.out.println(triangle.side);
         triangle.Trianglearea();
         System.out.println(triangle.Trianglearea());
 
-
+//  자동자 정보 구하기
         Car myCar = new Car("Avante");
         myCar.increaseSpeed();
         myCar.increaseSpeed();
@@ -106,19 +122,27 @@ public class Main {
 
 
 //        계산기
-        CalculatingMachine calculatingMachine = new CalculatingMachine(30,20);
+        CalculatingMachine calculatingMachine = new CalculatingMachine(30, 20);
         calculatingMachine.plus();
         calculatingMachine.minus();
         calculatingMachine.multiply();
         calculatingMachine.divide();
 
-        double result = calculatingMachine.Calculating(30, "-",20);
+        double result = calculatingMachine.Calculating(30, "-", 20);
 
         System.out.println("계산결과: " + result);
 
 
+//        커피 패키지 임포트
+        taste();
+        Bread.taste();
 
+        abs(-3);
 
+        Dog.Dog("웰시코기", "귀요미", "짖어");
+        Dog.Dog("웰시코기", "귀요미", "짖어");
+        Dog.seat("poppy");
+        Dog.hand();
     }// main() end
 } // class end
 
