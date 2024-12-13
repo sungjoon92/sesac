@@ -5,10 +5,13 @@ public class Dog {
     String name;
     String doging;
 
+    static int count;
+
     public Dog(String dogType, String name, String doging) {
         this.dogType = dogType;
         this.name = name;
         this.doging = doging;
+        count++;
     }
 
     void seat(){
