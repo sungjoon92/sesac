@@ -1,4 +1,4 @@
-package org.example.interfaceprac.vegicle;
+package org.example.interfaceprac.vehicle;
 
 public class Brucks extends Vehicle implements CargoLendable, PassengerBoardable {
 
