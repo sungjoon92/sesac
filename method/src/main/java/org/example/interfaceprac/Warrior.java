@@ -26,7 +26,7 @@ public class Warrior extends Character implements Warriorable {
         level++;
         hp += 30;
         damage += 10;
-        System.out.println("레벨이 상승하였습니다! 현재레벨: " + level + " 최대체력 상승: " + plusHp + " 데미지 상승: " + plusDamage);
+        System.out.println(MessageFormat.format("레벨이 상승하였습니다! 현재레벨: {0} 최대체력 상승: {1} 데미지 상승: {2}", level, plusHp, plusDamage));
     }
 
     @Override
@@ -37,6 +37,6 @@ public class Warrior extends Character implements Warriorable {
         } else {
             anger = MAX_ANGER;
         }// if() end
-        System.out.println("현재hp:" + hp + " 분노게이지: " + anger);
+        System.out.printf("현재hp:%d 분노게이지: %d%n", hp, anger);
     }
 }
