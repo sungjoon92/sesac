@@ -1,19 +1,26 @@
 package org.example.composition;
 
-public class Car {
+public class Car implements Tool{
+    public String model;
+    public Engine engine; // 컴포지션
+    public int speed;
 
-    public String modelName;
-    public Engine engine;
-    public int acceleration;
+    public Car(){}
 
-    public Car(String modelName, Engine engine) {
-        this.modelName = modelName;
+    public Car(String model, Engine engine) {
+        this.model = model;
         this.engine = engine;
-    }// Car() end
-    
-    // 현재 속도는 마력 * 10만 인 메서드
-    public void horsepowerOfTheEngine() {
-        acceleration = engine.horsepower * 10;
-        System.out.printf("현재마력: %d\n가속도: %d%n", engine.horsepower, acceleration);
-    }// horsepowerOfTheEngine() end
+        this.speed = 0;
+    }
+
+    public void speedUP(){
+        int amount = engine.horsePower;
+        speed += amount;
+
+    }
+
+    @Override
+    public void use() {
+        speedUP();
+    }
 }

@@ -1,9 +1,9 @@
 package org.example.composition;
 
 public class Engine {
-    public int horsepower;
+    public Engine(int horsePower) {
+        this.horsePower = horsePower;
+    }
 
-    public Engine(int horsepower) {
-        this.horsepower = horsepower;
-    }// Engine() end
+    public int horsePower;
 }
