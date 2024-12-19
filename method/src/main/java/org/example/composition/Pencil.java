@@ -1,6 +1,7 @@
 package org.example.composition;
 
-public class Pencil {
+public class Pencil implements Tool{
+
     public String color;
 
     public Pencil(String color) {
@@ -9,5 +10,10 @@ public class Pencil {
 
     public void write(){
         System.out.println("writing! with " + color);
+    }
+
+    @Override
+    public void use() {
+        write();
     }
 }
