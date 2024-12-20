@@ -16,9 +16,8 @@ public class StudentManager {
     }// StudentManager() end
 
     // 학생정보 저장
-    public List<Student> addStudent(Student student) {
+    public void addStudent(Student student) {
         students.add(student);
-        return students;
     }// addStudent() end
 
     // 학생들의 정보조회
