@@ -4,11 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Student {
-    private String name;
+    private final String name;
     public int age;
-    public String subject;
-    public int score;
-    private Map<String, Integer> grade;
+    private final Map<String, Integer> grade;
 
     // 기본 생성자
     public Student(String name, int age) {
@@ -18,9 +16,8 @@ public class Student {
     }
 
     // 과목, 점수 저장
-    public  Map<String , Integer> addGrade(String subject, Integer score) {
+    public void addGrade(String subject, Integer score) {
         grade.put(subject, score);
-        return grade;
     }// addGrade() end
 
     // 학생 정보 조회
