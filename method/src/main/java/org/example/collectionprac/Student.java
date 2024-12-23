@@ -22,9 +22,9 @@ public class Student {
 
     // 학생 정보 조회
     public void showInfo() {
-        System.out.println("이름: "+name);
-        System.out.println("나이: "+age);
-        System.out.println("과목점수: "+grade);
+        System.out.println("이름: " + name);
+        System.out.println("나이: " + age);
+        System.out.println("과목점수: " + grade);
     }
 
     // 해당 학생의 평균 점수 구하기
