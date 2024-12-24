@@ -16,5 +16,5 @@ abstract class Payment {
     }
 
     // 결제 메서드
-    public abstract void paymentProcess(User user);
+    public abstract void paymentProcess(User user, Drink drink);
 }
