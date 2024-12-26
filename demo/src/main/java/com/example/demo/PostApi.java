@@ -1,13 +1,11 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
 @RestController
+@RequestMapping("/posts")
 public class PostApi {
     List<Post> posts = new ArrayList<Post>();
     private Long id = 0L;
@@ -19,8 +17,11 @@ public class PostApi {
         posts.add(new Post(++id, "초기 제목", "초기 내용"));
     }
 
+    //restfull
+    // "/post"> post메서드
     // 글 생성
-    @GetMapping("posts/create")
+//    @GetMapping("posts/create")
+    @PostMapping()
     public Post creaPost() {
         Post post = new Post(++id, "제목", "내용");
         posts.add(post);
@@ -28,13 +29,13 @@ public class PostApi {
     }
 
     // 전체글 조회
-    @GetMapping("/posts")
+    @GetMapping("")
     public List<Post> readPosts() {
         return posts;
     }// readPosts end
 
     // 해당글 조회
-    @GetMapping("/posts/{id}")
+    @GetMapping("/{id}")
     public Post readPostById(@PathVariable Long id) {
         for (Post post : posts) {
             if (post.getId().equals(id)) {
@@ -44,8 +45,9 @@ public class PostApi {
         return null;
     }// readPostById() end
 
-
-    @GetMapping("/posts/{id}/update")
+    // "/post/{id}" / method : PUT : PATCH
+//    @GetMapping("/posts/{id}/update")
+    @PutMapping("/{id}")
     public Post updatePosts(@PathVariable Long id) {
         for (Post post : posts) {
             if (post.getId().equals(id)) {
@@ -57,7 +59,11 @@ public class PostApi {
         return null;
     }// updatePosts() end
 
-    @GetMapping("/posts/{id}/delete")
+
+    // "/post/{id}" / method : DELETE
+    // 삭제
+//    @GetMapping("/posts/{id}/delete")
+    @DeleteMapping("/{id}")
     public String deletePosts(@PathVariable Long id) {
         for (Post post : posts) {
             if (post.getId().equals(id)) {
