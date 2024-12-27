@@ -15,6 +15,8 @@ public class Post {
         this.title = title;
         this.content = content;
     }
+
+
     // 생성자 추가
     // 모든 필드에 대한 setter / getter 추가
 }
