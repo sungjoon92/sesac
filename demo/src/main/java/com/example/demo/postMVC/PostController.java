@@ -9,7 +9,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/mvc/posts")
 public class PostController {
-    PostService postService = new PostService();
+//    PostService postService = new PostService();
+
+
+    // DI
+    private final PostService postService;
+
+    public PostController(PostService postService) {
+        this.postService = postService;
+    }
 
     // 게시글 작성
     @PostMapping

@@ -1,10 +1,20 @@
 package com.example.demo.postMVC;
 
 import com.example.demo.Post;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
+@Service
 public class PostService {
-    PostRepository postRepository = new PostRepository();
+//    PostRepository postRepository = new PostRepository();
+    // DI
+    private final PostRepository postRepository;
+
+    public PostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
+
 
     // 게시글 생성
     public Post createPost(Post newPost) {
