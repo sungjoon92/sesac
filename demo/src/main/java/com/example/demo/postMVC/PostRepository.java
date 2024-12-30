@@ -2,16 +2,13 @@ package com.example.demo.postMVC;
 
 import com.example.demo.Post;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class PostRepository {
-    List<Post> posts = new ArrayList<Post>();
+    List<Post> posts = new ArrayList<>();
     private Long id = 0L;
 
     // 저장. create
@@ -46,9 +43,11 @@ public class PostRepository {
         String content = newPost.getContent();
 
         for (Post post : posts) {
-            post.setTitle(title);
-            post.setContent(content);
-            return post;
+            if (post.getId().equals(id)) {
+                post.setTitle(title);
+                post.setContent(content);
+                return post;
+            }
         }
         return null;
     }
