@@ -34,7 +34,7 @@ public class PostJpaService {
     // 게시글 조회
     public PostJpa readPostById(Long id) {
         PostJpa post = postJpaRepository.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("id가 없습니다"));;
+                .orElseThrow(()-> new IllegalArgumentException("id가 없습니다"));
         return post;
     }// readPostById() end
 
