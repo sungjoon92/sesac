@@ -1,5 +1,6 @@
-package com.example.demo.myjpasite;
+package com.example.demo.myjpasite.dto;
 
+import com.example.demo.myjpasite.PostV4;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -7,10 +8,10 @@ import lombok.Getter;
 @Builder
 public class PostResponseDto {
     private final Long id;
+
     private final String title;
     private final String content;
     private final String author;
-
 
     public static PostResponseDto from(PostV4 entity) {
         return PostResponseDto.builder()
@@ -19,6 +20,10 @@ public class PostResponseDto {
                 .content(entity.getContent())
                 .author(entity.getAuthor())
                 .build();
-    }// from() end
-}
+//        return new PostResponseDto(entity.getId(), entity.getTitle(), entity.getContent(), entity.getAuthor());
 
+
+
+
+    }
+}
