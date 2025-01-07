@@ -24,17 +24,17 @@ public class UserService {
 
 
     public List<UserResponseDto> readUser() {
-         return  userRepository.findAll().stream()
-                 .map(UserResponseDto::from)
-                 .toList();
+        return userRepository.findAll().stream().map(UserResponseDto::from).toList();
     }// readUser() end
 
-    public UserResponseDto findByUsername(String username) {
-        return userRepository.findByUsername(username);
-    }// readUser() end
-
-    public List<UserResponseDto> findAllByAge(int age) {
-        return userRepository.findAllByAge(age);
+    public List<UserResponseDto> searchUsers(String username, int age) {
+        if (username == null || username.isBlank()) {
+            // username이 비어있거나 공백이면 age로만 조회
+            return userRepository.findAllByAge(age);
+        } else {
+            // username이 있으면 username으로 조회
+            return userRepository.findByUsername(username);
+        }
     }// readUser() end
 
 

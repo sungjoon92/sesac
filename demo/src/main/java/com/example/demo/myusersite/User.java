@@ -1,9 +1,7 @@
 package com.example.demo.myusersite;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -21,16 +19,17 @@ public class User extends BaseTimeEntity{
     private String username;
 
     @NotNull
-    @Column(nullable = false)
+    @Email
+    @Column(nullable = false, unique = true)
     private String email;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(nullable = false, unique = false)
     @Length(min = 2, max = 10)
     private String nickname;
 
     @Min(0)
-    @Max(20)
+    @Max(150)
     private int age;
 
     @NotNull

@@ -38,23 +38,13 @@ public class UserController {
 
     // 특정 닉네임을 가진 사용자 조회
     @GetMapping("/search")
-    public ResponseEntity<ApiResponse<UserResponseDto>> readUserByName(@RequestParam String username) {
+    public ResponseEntity<ApiResponse<List<UserResponseDto>>> readUserByName(@RequestParam(defaultValue = "") String username, @RequestParam(defaultValue = "0") int age) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.ok(
                         "SUCCESS",
                         "SUCCESS",
-                        userService.findByUsername(username))// ApiResponse.ok() end
+                        userService.searchUsers(username, age))// ApiResponse.ok() end
         );// body() end
     }// readUserByName() end
 
-//    // 특정 나이의 사용자 조회
-//    @GetMapping
-//    public ResponseEntity<ApiResponse<List<UserResponseDto>>> readUserByAge(@RequestBody int age) {
-//        return ResponseEntity.status(HttpStatus.CREATED)
-//                .body(ApiResponse.ok(
-//                        "SUCCESS",
-//                        "SUCCESS",
-//                        userService.findAllByAge(age))// ApiResponse.ok() end
-//        );// body() end
-//    }// readUserByName() end
 }// class end

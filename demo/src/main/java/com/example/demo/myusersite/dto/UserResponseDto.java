@@ -12,6 +12,7 @@ public class UserResponseDto {
     private final String username;
     private final String email;
     private final String nickname;
+    private final int age;
 
     private final LocalDateTime createdAt;
     private final LocalDateTime updatedAt;
@@ -22,8 +23,11 @@ public class UserResponseDto {
                 .username(entity.getUsername())
                 .email(entity.getEmail())
                 .nickname(entity.getNickname())
+                .age(entity.getAge())
                 .createdAt(entity.getCreatedAt())
                 .updatedAt(entity.getUpdatedAt())
                 .build();
     }// from() end
+
+
 }// class end

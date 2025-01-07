@@ -11,7 +11,7 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     // username으로 User 엔티티를 조회하는 메서드
-    UserResponseDto findByUsername(String username);
+    List<UserResponseDto> findByUsername(String username);
 
     // 동일 나이의 모든 사용자 조회
     List<UserResponseDto> findAllByAge(int age);
