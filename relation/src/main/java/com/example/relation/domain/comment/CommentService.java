@@ -1,6 +1,6 @@
 package com.example.relation.domain.comment;
 
-import com.example.relation.domain.post.Post;
+import com.example.relation.domain.post.entity.Post;
 import com.example.relation.domain.post.PostRepository;
 import com.example.relation.global.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;

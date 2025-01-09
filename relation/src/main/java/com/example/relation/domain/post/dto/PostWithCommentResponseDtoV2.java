@@ -1,7 +1,7 @@
 package com.example.relation.domain.post.dto;
 
 import com.example.relation.domain.comment.CommentResponseDto;
-import com.example.relation.domain.post.Post;
+import com.example.relation.domain.post.entity.Post;
 import lombok.Builder;
 import lombok.Getter;
 

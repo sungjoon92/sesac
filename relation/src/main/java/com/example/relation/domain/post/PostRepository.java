@@ -1,5 +1,7 @@
 package com.example.relation.domain.post;
 
+import com.example.relation.domain.post.dto.PostListWithCommentCountResponseDto;
+import com.example.relation.domain.post.entity.Post;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -44,6 +46,32 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @EntityGraph(attributePaths = {"comments"})
     @Query("SELECT p FROM Post p")
     List<Post> findAllWithCommentEntityGraph();
+
+    @Query("SELECT p, COUNT(c) " +
+            "FROM Post p " +
+            "LEFT JOIN p.comments c " +
+            "GROUP BY p")
+    List<Object[]> findAllWithCommentCount();
+    @Query("SELECT new com.example.relation.domain.post.dto.PostListWithCommentCountResponseDto(p.id, p.title, p.createdAt, COUNT(c)) " +
+            "FROM Post p " +
+            "LEFT JOIN p.comments c " +
+            "GROUP BY p")
+    List<PostListWithCommentCountResponseDto> findAllWithCommentCountDTO();
+
+    @Query("SELECT p FROM Post p " +
+            "LEFT JOIN p.comments c " +
+            "LEFT JOIN p.postTags t " +
+            "LEFT JOIN t.tag " +
+            "WHERE p.id = :id")
+    Optional<Post> findByIdWithCommentAndTag(@Param("id") Long id);
+
+
+    @Query("SELECT p FROM Post p " +
+            "LEFT JOIN FETCH p.postTags pt " +
+            "LEFT JOIN FETCH pt.tag " +
+            "WHERE p.id = :id")
+    Optional<Post> findByIdWithTag(@Param("id") Long id);
+
 //    의미:
 //    @EntityGraph는 JPA에서 Fetch Join을 선언적으로 정의하는 방법.
 //    attributePaths = {"comments"}는 comments를 즉시 로딩하도록 설정.

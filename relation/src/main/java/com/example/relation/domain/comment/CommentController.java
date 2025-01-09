@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/posts/{postId}/components")
+@RequestMapping("/posts/{postId}/comments")
 public class CommentController {
     private final CommentService commentService;
 
