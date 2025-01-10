@@ -35,7 +35,7 @@ public class ExampleController {
     @GetMapping("/nplus1/basic")
     public void LoadingExample3() {
         List<Post> posts = postRepository.findAll();
-        posts.stream().map(PostWithCommentResponseDtoV2::from).toList();
+//        posts.stream().map(PostWithCommentResponseDtoV2::from).toList();
     }
 
     @GetMapping("/nplus1/fetch")

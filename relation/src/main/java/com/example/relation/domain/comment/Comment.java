@@ -1,6 +1,7 @@
 package com.example.relation.domain.comment;
 
 import com.example.relation.domain.post.entity.Post;
+import com.example.relation.domain.validator.NoProfanity;
 import com.example.relation.global.entity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -15,6 +16,9 @@ public class Comment extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    // 커스텀 어노테이션
+    @NoProfanity
     private String content;
 
 

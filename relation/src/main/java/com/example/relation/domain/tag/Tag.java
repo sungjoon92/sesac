@@ -20,8 +20,7 @@ public class Tag extends BaseTimeEntity {
 
 
     @Builder
-    public Tag(Long id, String name) {
-        this.id = id;
+    public Tag( String name) {
         this.name = name;
     }
 }

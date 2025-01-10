@@ -103,6 +103,14 @@ public class PostController {
                 )
         );
     }
+
+    @GetMapping("/tage")
+    public ResponseEntity<ApiResponse<List<PostWithCommentAndTagResponseDtoV2>>> readPostsByTag(@RequestParam String tagName) {
+        return ResponseEntity.ok(ApiResponse.ok(
+                postService.readPostsByTag(tagName)
+        ));
+    }
+
 }
 
 

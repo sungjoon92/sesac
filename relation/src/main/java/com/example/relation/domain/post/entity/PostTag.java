@@ -8,8 +8,9 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-
 @Entity
+@Table( name = "post_tag",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"post_id", "tag_id"}))
 @Getter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
