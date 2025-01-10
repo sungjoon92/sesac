@@ -19,6 +19,7 @@ public class Comment extends BaseTimeEntity {
 
     // 커스텀 어노테이션
     @NoProfanity
+//    @NoProfanity(message = "욕설이 포함되어 있습니다!")
     private String content;
 
 
