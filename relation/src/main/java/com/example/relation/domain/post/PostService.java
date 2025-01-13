@@ -8,10 +8,13 @@ import com.example.relation.domain.post.entity.PostTag;
 import com.example.relation.domain.tag.Tag;
 import com.example.relation.domain.tag.TagRepository;
 import com.example.relation.domain.tag.dto.TagRequestDto;
+import com.example.relation.global.common.service.FileService;
 import com.example.relation.global.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -23,29 +26,41 @@ public class PostService {
     private final CommentRepository commentRepository;
     private final TagRepository tagRepository;
     private final PostTagRepository postTagRepository;
-
+    // 파일 저장용 DI
+    private final FileService fileService;
     @Transactional
     public PostResponseDto createPost(PostCreateRequestDto requestDto) {
         Post post = postRepository.save(requestDto.toEntity());
         return PostResponseDto.from(post);
     }
 
-    public List<PostListResponseDto> readPosts() {
-        return postRepository.findAll().stream().map(PostListResponseDto::from).toList();
+    // 게시글 전체 조회, 정렬, 페이징
+    public List<PostListResponseDto> readPosts(Pageable pageable) {
+        return postRepository.findAll(pageable).getContent().stream().map(PostListResponseDto::from).toList();
     }
 
+    // 게시글 단일 조회
     public PostResponseDto readPostById(Long id) {
         Post post = postRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException());
         return PostResponseDto.from(post);
     }
 
+    // 해당 게시글과 글의 댓글 전체 조회
     public PostWithCommentResponseDtoV2 readPostByIdV2(Long id) {
-//        post, comment를 한번에 가져오고 싶다.
+    // post, comment를 한번에 가져오고 싶다.
         Post post = postRepository.findByIdWithComment(id).orElseThrow(() -> new ResourceNotFoundException());
 
         return PostWithCommentResponseDtoV2.from(post);
     }
 
+    // 전체 게시글과 글의 댓글 전체 조회
+    public List<PostWithCommentResponseDtoV2> readPostsWithCommentPage(Pageable pageable) {
+        return postRepository.findPostsWithCommentPage(pageable).getContent().stream().map(
+                PostWithCommentResponseDtoV2::from
+        ).toList();
+    }
+
+    // 게시글 수정
     @Transactional
     public PostResponseDto updatePost(Long id, PostUpdateRequestDto requestDto) {
         Post post = postRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException());
@@ -54,6 +69,7 @@ public class PostService {
         return PostResponseDto.from(post);
     }
 
+    // 게시글 삭제
     @Transactional
     public void deletePost(Long id) {
         Post post = postRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException());
@@ -121,4 +137,23 @@ public class PostService {
     }
 
 
+    public PostListWithPageResponseDto readPostsWithPageDetail(Pageable pageable){
+        return PostListWithPageResponseDto.from(postRepository.findAll(pageable));
+    }
+
+    // 파일저장
+    @Transactional
+    public PostWithImageDtoResponseDto createPostWithImage (
+            PostCreateRequestDto requestDto,
+            MultipartFile image
+    ) {
+        String imageUrl = null;
+
+        if (image != null && !image.isEmpty()) {
+            imageUrl = fileService.saveFile(image);
+        }
+        Post post = requestDto.toEntity();
+        post.setImageUrl(imageUrl);
+        return PostWithImageDtoResponseDto.from(postRepository.save(post));
+    }
 }

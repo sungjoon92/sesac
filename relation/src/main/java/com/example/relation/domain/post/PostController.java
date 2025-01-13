@@ -7,9 +7,11 @@ import com.example.relation.global.exception.ResourceNotFoundException;
 import com.example.relation.global.response.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -30,13 +32,24 @@ public class PostController {
                 );
     }
 
+    // 게시글 전체 조회
     @GetMapping
-    public ResponseEntity<ApiResponse<List<PostListResponseDto>>> readPosts() {
-        ApiResponse<List<PostListResponseDto>> response = ApiResponse.ok(postService.readPosts());
+    public ResponseEntity<ApiResponse<List<PostListResponseDto>>> readPosts(Pageable pageable) {
+        ApiResponse<List<PostListResponseDto>> response = ApiResponse.ok(postService.readPosts(pageable));
 
         return ResponseEntity.ok(response);
     }
 
+
+
+    @GetMapping("/detail/pages")
+    public ResponseEntity<ApiResponse<List<PostWithCommentResponseDtoV2>>> readPostsWithCommentPage(Pageable pageable){
+        return ResponseEntity.ok(ApiResponse.ok(
+                postService.readPostsWithCommentPage(pageable)
+        ));
+    }
+
+    // 게시글 단일조회
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<PostResponseDto>> readPostById(@PathVariable Long id) {
         ApiResponse<PostResponseDto> response = ApiResponse.ok(postService.readPostById(id));
@@ -44,12 +57,23 @@ public class PostController {
 
     }
 
+    // 게시글과 글의 댓글 전체 조회
     @GetMapping("/v2/{id}")
     public ResponseEntity<ApiResponse<PostWithCommentResponseDtoV2>> readPostByIdV2(@PathVariable Long id) {
 
         return ResponseEntity.ok(ApiResponse.ok(postService.readPostByIdV2(id)));
     }
 
+
+    @GetMapping("/pages/detail")
+    public ResponseEntity<ApiResponse<PostListWithPageResponseDto>> readPostsWithPageDetail(Pageable pageable){
+        return ResponseEntity.ok(ApiResponse.ok(
+                postService.readPostsWithPageDetail(pageable)
+        ));
+    }
+
+
+    // 게시글 수정
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<PostResponseDto>> updatePost(@PathVariable Long id, @RequestBody PostUpdateRequestDto requestDto) {
         ApiResponse<PostResponseDto> response = ApiResponse.ok("게시글이 성공적으로 수정되었습니다", "UPDATED", postService.updatePost(id, requestDto));
@@ -57,6 +81,7 @@ public class PostController {
         return ResponseEntity.ok(response);
     }
 
+    // 게시글 삭제
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Void>> deletePost(@PathVariable Long id) {
         postService.deletePost(id);
@@ -111,9 +136,16 @@ public class PostController {
         ));
     }
 
+    // 파일저장
+    @PostMapping("/images")
+    public ResponseEntity<ApiResponse<PostWithImageDtoResponseDto>> createPostWithImage(
+            @RequestPart(value = "data") PostCreateRequestDto requestDto,
+            @RequestPart(value = "image", required = false) MultipartFile image
+    ) {
+        System.out.println(image.getSize());
+        return ResponseEntity.ok(ApiResponse.ok(
+                postService.createPostWithImage(requestDto, image)
+        ));
+    }
 }
-
-
-
-
 

@@ -1,9 +1,12 @@
 package com.example.relation.domain.post;
 
 import com.example.relation.domain.post.dto.PostListWithCommentCountResponseDto;
+import com.example.relation.domain.post.dto.PostListWithPageResponseDto;
 import com.example.relation.domain.post.dto.PostResponseDto;
 import com.example.relation.domain.post.dto.PostWithCommentAndTagResponseDtoV2;
 import com.example.relation.domain.post.entity.Post;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -82,7 +85,9 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     List<PostWithCommentAndTagResponseDtoV2> findAllByTagName(@Param("tagName") String tagName);
 
 
-
+    @Query("SELECT p FROM Post p " +
+            "LEFT JOIN FETCH p.comments")
+    Page<Post> findPostsWithCommentPage(Pageable pageable);
 //    의미:
 //    @EntityGraph는 JPA에서 Fetch Join을 선언적으로 정의하는 방법.
 //    attributePaths = {"comments"}는 comments를 즉시 로딩하도록 설정.
