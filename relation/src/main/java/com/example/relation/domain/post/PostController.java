@@ -28,9 +28,9 @@ public class PostController {
                 .body(
                         ApiResponse.ok("게시글이 성공적으로 작성되었습니다", "CREATED",
                                 postService.createPost(requestDto)
-                        )
-                );
-    }
+                        )// ApiResponse.ok() end
+                );// .body() end
+    }// createPost() end
 
     // 게시글 전체 조회
     @GetMapping
@@ -38,7 +38,7 @@ public class PostController {
         ApiResponse<List<PostListResponseDto>> response = ApiResponse.ok(postService.readPosts(pageable));
 
         return ResponseEntity.ok(response);
-    }
+    }// readPosts() end
 
 
 
@@ -47,22 +47,20 @@ public class PostController {
         return ResponseEntity.ok(ApiResponse.ok(
                 postService.readPostsWithCommentPage(pageable)
         ));
-    }
+    }// readPostsWithCommentPage()end
 
     // 게시글 단일조회
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<PostResponseDto>> readPostById(@PathVariable Long id) {
         ApiResponse<PostResponseDto> response = ApiResponse.ok(postService.readPostById(id));
         return ResponseEntity.ok(response);
-
-    }
+    }// readPostById() end
 
     // 게시글과 글의 댓글 전체 조회
     @GetMapping("/v2/{id}")
     public ResponseEntity<ApiResponse<PostWithCommentResponseDtoV2>> readPostByIdV2(@PathVariable Long id) {
-
         return ResponseEntity.ok(ApiResponse.ok(postService.readPostByIdV2(id)));
-    }
+    }// readPostByIdV2() end
 
 
     @GetMapping("/pages/detail")
@@ -70,7 +68,7 @@ public class PostController {
         return ResponseEntity.ok(ApiResponse.ok(
                 postService.readPostsWithPageDetail(pageable)
         ));
-    }
+    }// readPostsWithPageDetail() end
 
 
     // 게시글 수정
@@ -79,7 +77,7 @@ public class PostController {
         ApiResponse<PostResponseDto> response = ApiResponse.ok("게시글이 성공적으로 수정되었습니다", "UPDATED", postService.updatePost(id, requestDto));
 
         return ResponseEntity.ok(response);
-    }
+    }// updatePost() end
 
     // 게시글 삭제
     @DeleteMapping("/{id}")
@@ -87,27 +85,27 @@ public class PostController {
         postService.deletePost(id);
         ApiResponse<Void> response = ApiResponse.ok("게시글이 성공적으로 삭제되었습니다", "DELETED", null);
         return ResponseEntity.ok(response);
-    }
+    }// deletePost() end
 
     @GetMapping("/comment-count")
     public ResponseEntity<ApiResponse<List<PostListWithCommentCountResponseDto>>> readPostsWithCommentCount() {
         return ResponseEntity.ok(ApiResponse.ok(
                 postService.readPostsWithCommentCount()
         ));
-    }
+    }// readPostsWithCommentCount() end
 
     @GetMapping("/comment-count-dto")
     public ResponseEntity<ApiResponse<List<PostListWithCommentCountResponseDto>>> readPostsWithCommentCountDto() {
         return ResponseEntity.ok(ApiResponse.ok(
                 postService.readPostsWithCommentCountDto()
         ));
-    }
+    }// readPostsWithCommentCountDto() end
 
     // post , tag 연결
     @PostMapping("/{id}/tags")
     public void addTagToPost(@PathVariable Long id, @Valid @RequestBody TagRequestDto requestDto) {
         postService.addTagToPost(id, requestDto);
-    }
+    }// addTagToPost() end
 
     // 게시글의 댓글과 해시태그 여부 조회
     @GetMapping("/{id}/detail")
@@ -117,7 +115,7 @@ public class PostController {
                         postService.PostWithCommentAndTagResponseDto(id)
                 )
         );
-    }
+    }// readPostByIdWithCommentAndTag() end
 
     // 게시글의 댓글과 해시태그 여부 조회
     @GetMapping("/{id}/detail/v2")

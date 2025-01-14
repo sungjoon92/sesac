@@ -42,14 +42,14 @@ public class CommentController {
     public ResponseEntity<ApiResponse<List<CommentResponseDto>>> readComment() {
         ApiResponse<List<CommentResponseDto>> response = ApiResponse.ok(commentService.readComment());
         return ResponseEntity.ok(response);
-    }
+    }// readComment() end
 
     // 댓글 일부 조회
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<CommentResponseDto>> readCommentById(@PathVariable Long id){
         ApiResponse<CommentResponseDto> response = ApiResponse.ok(commentService.readCommentById(id));
         return ResponseEntity.ok(response);
-    };
+    }// readCommentById() end
 
 
     @PutMapping("/{commentId}")
