@@ -11,13 +11,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class SignupResponseDto {
     private String username;
     private String email;
     private Role role;
 
     public static SignupResponseDto from(User entity){
-        return com.example.relation.domain.user.dto.SignupResponseDto.builder()
+        return SignupResponseDto.builder()
                 .username(entity.getUsername())
                 .email(entity.getEmail())
                 .role(entity.getRole())

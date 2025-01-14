@@ -41,6 +41,7 @@ public class User implements UserDetails {
         this.role = role;
     }
 
+    // getAuthorities는 사용자의 권한(Authority)을 정의하는 메서드이다.
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
