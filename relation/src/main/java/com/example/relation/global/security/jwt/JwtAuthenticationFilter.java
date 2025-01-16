@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 // Spring Security에서 제공하는 인증 관련 클래스를 임포트합니다.
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -77,7 +78,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     );
 
             // SecurityContext에 인증 객체를 설정하여 요청의 인증 상태를 유지합니다.
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+//            SecurityContextHolder.getContext().setAuthentication(authentication);
+            SecurityContext context = SecurityContextHolder.createEmptyContext();
+
+            context.setAuthentication(authentication);
+
+            SecurityContextHolder.setContext(context);
         }
 
         // 다음 필터로 요청을 전달합니다.

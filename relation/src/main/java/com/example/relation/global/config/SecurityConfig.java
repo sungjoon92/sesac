@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 // Spring Security에서 제공하는 AuthenticationManager 관련 클래스들을 임포트합니다.
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -60,6 +61,8 @@ public class SecurityConfig {
     // JwtAuthenticationFilter 주입: 요청에서 JWT 토큰을 검증하는 필터입니다.
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
+    private final SecurityPathConfig securityPathConfig;
+
     /**
      * PasswordEncoder를 Bean으로 등록합니다.
      * Spring Security는 비밀번호를 저장하거나 인증할 때 반드시 암호화를 사용해야 합니다.
@@ -92,7 +95,8 @@ public class SecurityConfig {
                 // HTTP 요청에 대한 권한을 설정합니다.
                 .authorizeHttpRequests(auth -> auth
                         // "/auth/**" 경로는 인증 없이 접근을 허용합니다.
-                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/auth/**", "/error", "/images/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, securityPathConfig.PUBLIC_GET_URLS).permitAll()
                         // 그 외 모든 요청은 인증이 필요합니다.
                         .anyRequest().authenticated()
                 )

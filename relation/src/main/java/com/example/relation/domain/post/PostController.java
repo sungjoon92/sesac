@@ -149,6 +149,7 @@ public class PostController {
         ));
     }
 
+    // 로그인한 유저의 글 작성
     @PostMapping("/post2")
     public ResponseEntity<ApiResponse<Post2ResponseDto>> createPost2(
             @Valid @RequestBody Post2CreateWithAuthorRequestDto requestDto,
@@ -163,7 +164,7 @@ public class PostController {
                 );
     }
 
-
+    // 로그인한 유저의 전체글 조회, 페이징
     @GetMapping("/my/posts")
     public ResponseEntity<ApiResponse<Post2ListPageResponseDto>> getMyPosts(
             @AuthenticationPrincipal User user,
