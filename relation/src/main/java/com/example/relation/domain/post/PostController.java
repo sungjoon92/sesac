@@ -1,15 +1,16 @@
 package com.example.relation.domain.post;
 
-import com.example.relation.*;
 import com.example.relation.domain.post.dto.*;
 import com.example.relation.domain.tag.dto.TagRequestDto;
-import com.example.relation.global.exception.ResourceNotFoundException;
+import com.example.relation.domain.user.entity.User;
+import com.example.relation.domain.user.service.UserService;
 import com.example.relation.global.response.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,6 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostController {
     private final PostService postService;
+    private final UserService userService;
 
     @PostMapping
     public ResponseEntity<ApiResponse<PostResponseDto>> createPost(@Valid @RequestBody PostCreateRequestDto requestDto) {
@@ -127,7 +129,8 @@ public class PostController {
         );
     }
 
-    @GetMapping("/tage")
+    // 글의 태그 갯수 조회
+    @GetMapping("/tag")
     public ResponseEntity<ApiResponse<List<PostWithCommentAndTagResponseDtoV2>>> readPostsByTag(@RequestParam String tagName) {
         return ResponseEntity.ok(ApiResponse.ok(
                 postService.readPostsByTag(tagName)
@@ -145,5 +148,33 @@ public class PostController {
                 postService.createPostWithImage(requestDto, image)
         ));
     }
+
+    @PostMapping("/post2")
+    public ResponseEntity<ApiResponse<Post2ResponseDto>> createPost2(
+            @Valid @RequestBody Post2CreateWithAuthorRequestDto requestDto,
+            @AuthenticationPrincipal User user
+    ) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(
+                        ApiResponse.ok("게시글이 성공적으로 작성되었습니다","CREATED",
+                                postService.createPost2(requestDto, user)
+                        )
+                );
+    }
+
+
+    @GetMapping("/my/posts")
+    public ResponseEntity<ApiResponse<Post2ListPageResponseDto>> getMyPosts(
+            @AuthenticationPrincipal User user,
+            Pageable pageable
+    ) {
+        return ResponseEntity.ok(
+                ApiResponse.ok(
+                        userService.getMyPosts(user, pageable)
+                )
+        );
+    }
 }
+
 

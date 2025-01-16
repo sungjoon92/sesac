@@ -85,7 +85,7 @@ public class SecurityConfig {
                 // CSRF(Cross-Site Request Forgery) 보호를 비활성화합니다. (JWT를 사용하기 때문)
                 .csrf(csrf -> csrf.disable())
 
-                // 세션 관리를 Stateless로 설정합니다. (JWT 기반 인증을 사용하기 때문)
+                // 세션 관리를 Stateless 로 설정합니다. (JWT 기반 인증을 사용하기 때문)
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
@@ -97,7 +97,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
 
-                // JwtAuthenticationFilter를 UsernamePasswordAuthenticationFilter 앞에 추가합니다.
+                // JwtAuthenticationFilter 를 UsernamePasswordAuthenticationFilter 앞에 추가합니다.
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
 
                 // 인증 실패 및 권한 부족 예외를 처리하는 핸들러를 등록합니다.

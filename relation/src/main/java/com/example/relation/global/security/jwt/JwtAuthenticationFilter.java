@@ -61,6 +61,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         // 토큰이 존재하고 유효한 경우
         if (StringUtils.hasText(token) && jwtTokenProvider.validateToken(token)) {
+
             // 토큰에서 사용자 이름(username)을 추출합니다.
             String username = jwtTokenProvider.getUsername(token);
 
