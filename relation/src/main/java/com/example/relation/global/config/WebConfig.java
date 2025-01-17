@@ -2,6 +2,7 @@ package com.example.relation.global.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -9,6 +10,16 @@ import java.nio.file.Paths;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:5173")
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowedHeaders("*")
+                .allowCredentials(true)
+                .maxAge(3600);
+    }
+
     @Value("${file.dir}")
     private String fileDir;
     // 'fileDir'은 외부 파일이 저장된 디렉터리를 나타내는 변수로,
@@ -37,5 +48,7 @@ public class WebConfig implements WebMvcConfigurer {
                 // 예: /images/example.jpg 요청 -> file:/absolute/path/to/your/directory/example.jpg
                 .addResourceLocations("file:" + uploadPath + "/");
     }
+
+
 
 }

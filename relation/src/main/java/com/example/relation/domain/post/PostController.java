@@ -164,18 +164,6 @@ public class PostController {
                 );
     }
 
-    // 로그인한 유저의 전체글 조회, 페이징
-    @GetMapping("/my/posts")
-    public ResponseEntity<ApiResponse<Post2ListPageResponseDto>> getMyPosts(
-            @AuthenticationPrincipal User user,
-            Pageable pageable
-    ) {
-        return ResponseEntity.ok(
-                ApiResponse.ok(
-                        userService.getMyPosts(user, pageable)
-                )
-        );
-    }
 }// class end
 
 

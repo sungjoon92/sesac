@@ -37,12 +37,15 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 // 비밀번호 암호화를 위한 BCryptPasswordEncoder 및 PasswordEncoder 인터페이스를 임포트합니다.
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 // Spring Security 필터 체인 관련 클래스를 임포트합니다.
 import org.springframework.security.web.SecurityFilterChain;
 
 // Spring Security의 기본 인증 필터를 임포트합니다.
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 // @Configuration: 이 클래스가 Spring의 설정 클래스로 인식되도록 선언합니다.
 // @EnableWebSecurity: Spring Security의 웹 보안 기능을 활성화합니다.
@@ -61,7 +64,7 @@ public class SecurityConfig {
     // JwtAuthenticationFilter 주입: 요청에서 JWT 토큰을 검증하는 필터입니다.
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
-    private final SecurityPathConfig securityPathConfig;
+
 
     /**
      * PasswordEncoder를 Bean으로 등록합니다.
@@ -85,6 +88,8 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
+
+                .cors(cors -> cors.configurationSource(corsConfigurationSource())) // CORS 설정 연결
                 // CSRF(Cross-Site Request Forgery) 보호를 비활성화합니다. (JWT를 사용하기 때문)
                 .csrf(csrf -> csrf.disable())
 
@@ -94,9 +99,10 @@ public class SecurityConfig {
 
                 // HTTP 요청에 대한 권한을 설정합니다.
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/auth/verify").authenticated()
                         // "/auth/**" 경로는 인증 없이 접근을 허용합니다.
                         .requestMatchers("/auth/**", "/error", "/images/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, securityPathConfig.PUBLIC_GET_URLS).permitAll()
+                        .requestMatchers(HttpMethod.GET, SecurityPathConfig.PUBLIC_GET_URLS).permitAll()
                         // 그 외 모든 요청은 인증이 필요합니다.
                         .anyRequest().authenticated()
                 )
@@ -115,6 +121,20 @@ public class SecurityConfig {
         // SecurityFilterChain 객체를 빌드하여 반환합니다.
         return http.build();
     }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.addAllowedOrigin("http://localhost:5173"); // React의 기본 포트
+        configuration.addAllowedMethod("*");
+        configuration.addAllowedHeader("*");
+        configuration.setAllowCredentials(true);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+
 
     /**
      * AuthenticationManager를 Bean으로 등록합니다.
