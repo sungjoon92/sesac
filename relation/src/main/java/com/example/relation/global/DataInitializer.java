@@ -1,15 +1,16 @@
 //package com.example.relation.global;
 //
 //
-//import com.example.relation.domain.comment.Comment;
-//import com.example.relation.domain.comment.CommentRepository;
-//import com.example.relation.domain.post.PostRepository;
-//import com.example.relation.domain.post.PostTagRepository;
+//
+//import com.example.relation.domain.comment.entity.Comment;
+//import com.example.relation.domain.comment.repository.CommentRepository;
 //import com.example.relation.domain.post.entity.Post;
 //import com.example.relation.domain.post.entity.PostTag;
-//import com.example.relation.domain.tag.Tag;
-//import com.example.relation.domain.tag.TagRepository;
-//import com.example.relation.domain.user.dto.SignupRequestDto;
+//import com.example.relation.domain.post.repository.PostRepository;
+//import com.example.relation.domain.post.repository.PostTagRepository;
+//import com.example.relation.domain.tag.entity.Tag;
+//import com.example.relation.domain.tag.repository.TagRepository;
+//import com.example.relation.domain.user.dto.request.SignupRequestDto;
 //import com.example.relation.domain.user.service.AuthService;
 //import lombok.RequiredArgsConstructor;
 //import org.springframework.boot.CommandLineRunner;

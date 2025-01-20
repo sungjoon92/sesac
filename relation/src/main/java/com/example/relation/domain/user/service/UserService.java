@@ -1,9 +1,9 @@
 package com.example.relation.domain.user.service;
 
-import com.example.relation.domain.post.Post2Repository;
-import com.example.relation.domain.post.dto.Post2ListPageResponseDto;
+import com.example.relation.domain.post.repository.Post2Repository;
+import com.example.relation.domain.post.dto.response.Post2ListPageResponseDto;
 import com.example.relation.domain.user.Repository.UserRepository;
-import com.example.relation.domain.user.dto.UserResponseDto;
+import com.example.relation.domain.user.dto.response.UserResponseDto;
 import com.example.relation.domain.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;

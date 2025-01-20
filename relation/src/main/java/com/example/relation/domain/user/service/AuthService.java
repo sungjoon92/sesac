@@ -2,10 +2,10 @@ package com.example.relation.domain.user.service;
 
 // 필요한 의존성 및 클래스 임포트
 import com.example.relation.domain.user.Repository.UserRepository;
-import com.example.relation.domain.user.dto.LoginRequestDto;
-import com.example.relation.domain.user.dto.SignupRequestDto;
-import com.example.relation.domain.user.dto.SignupResponseDto;
-import com.example.relation.domain.user.dto.TokenResponseDto;
+import com.example.relation.domain.user.dto.request.LoginRequestDto;
+import com.example.relation.domain.user.dto.request.SignupRequestDto;
+import com.example.relation.domain.user.dto.response.SignupResponseDto;
+import com.example.relation.domain.user.dto.response.TokenResponseDto;
 import com.example.relation.domain.user.entity.User;
 import com.example.relation.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;

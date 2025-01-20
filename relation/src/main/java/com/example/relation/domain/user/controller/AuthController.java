@@ -1,9 +1,9 @@
 package com.example.relation.domain.user.controller;
 
-import com.example.relation.domain.user.dto.LoginRequestDto;
-import com.example.relation.domain.user.dto.SignupRequestDto;
-import com.example.relation.domain.user.dto.SignupResponseDto;
-import com.example.relation.domain.user.dto.TokenResponseDto;
+import com.example.relation.domain.user.dto.request.LoginRequestDto;
+import com.example.relation.domain.user.dto.request.SignupRequestDto;
+import com.example.relation.domain.user.dto.response.SignupResponseDto;
+import com.example.relation.domain.user.dto.response.TokenResponseDto;
 import com.example.relation.domain.user.service.AuthService;
 import com.example.relation.global.response.ApiResponse;
 import jakarta.validation.Valid;

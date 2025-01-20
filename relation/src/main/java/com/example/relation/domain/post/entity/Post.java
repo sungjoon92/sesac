@@ -1,7 +1,7 @@
 package com.example.relation.domain.post.entity;
 
-import com.example.relation.domain.comment.Comment;
-import com.example.relation.domain.post.dto.PostUpdateRequestDto;
+import com.example.relation.domain.comment.entity.Comment;
+import com.example.relation.domain.post.dto.request.PostUpdateRequestDto;
 import com.example.relation.global.entity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -34,7 +34,7 @@ public class Post extends BaseTimeEntity {
     private List<PostTag> postTags = new ArrayList<>();
 
     @OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments;
+    private List<Comment> comments = new ArrayList<>();
 
     @Builder
     public Post(String title, String content, String author) {

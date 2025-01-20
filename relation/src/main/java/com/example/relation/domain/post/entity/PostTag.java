@@ -1,6 +1,6 @@
 package com.example.relation.domain.post.entity;
 
-import com.example.relation.domain.tag.Tag;
+import com.example.relation.domain.tag.entity.Tag;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

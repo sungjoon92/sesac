@@ -2,8 +2,8 @@ package com.example.relation.domain.example;
 
 
 import com.example.relation.domain.post.entity.Post;
-import com.example.relation.domain.post.PostRepository;
-import com.example.relation.domain.post.dto.PostWithCommentResponseDtoV2;
+import com.example.relation.domain.post.repository.PostRepository;
+import com.example.relation.domain.post.dto.response.PostWithCommentResponseDtoV2;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

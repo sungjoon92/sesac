@@ -1,7 +1,7 @@
 package com.example.relation.domain.user.controller;
 
-import com.example.relation.domain.post.dto.Post2ListPageResponseDto;
-import com.example.relation.domain.user.dto.UserResponseDto;
+import com.example.relation.domain.post.dto.response.Post2ListPageResponseDto;
+import com.example.relation.domain.user.dto.response.UserResponseDto;
 import com.example.relation.domain.user.entity.User;
 import com.example.relation.domain.user.service.UserService;
 import com.example.relation.global.response.ApiResponse;
